@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jira Lite</title>
+    <!-- Modern font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-ticket"></i> Jira Lite
+        </div>
+        <nav class="nav-menu">
+            <a href="#" class="active" onclick="switchView('dashboard')"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+            <a href="#" onclick="switchView('tickets')"><i class="fa-solid fa-list"></i> All Tickets</a>
+            <a href="#" onclick="switchView('create')"><i class="fa-solid fa-plus"></i> New Ticket</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-header">
+            <h2>Welcome to Jira Lite</h2>
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=Agent+Smith&background=E0E7FF&color=4F46E5" alt="Profile">
+            </div>
+        </header>
+
+        <!-- Notification Area -->
+        <div id="notification-area"></div>
+
+        <!-- Dashboard View -->
+        <section id="dashboard" class="view-section active">
+            <div class="stats-grid" id="stats-container">
+                <!-- Injected via JS -->
+            </div>
+            
+            <h3 class="section-title">Recent Tickets</h3>
+            <div class="ticket-list" id="recent-tickets"></div>
+        </section>
+
+        <!-- Tickets List View -->
+        <section id="tickets" class="view-section">
+            <div class="section-header">
+                <h3 class="section-title">All Tickets</h3>
+                <button class="btn btn-primary" onclick="switchView('create')">Create Ticket</button>
+            </div>
+            <div class="ticket-list full-list" id="all-tickets"></div>
+        </section>
+
+        <!-- Create Ticket View -->
+        <section id="create" class="view-section">
+            <div class="form-container glass-card">
+                <h3 class="section-title">Create New Ticket</h3>
+                <form id="create-ticket-form">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" class="form-control" placeholder="Brief summary of the issue" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" class="form-control" rows="5" placeholder="Detailed description. ML will predict category and priority automatically." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submit-btn">
+                        <i class="fa-solid fa-magic"></i> Create Ticket & Predict
+                    </button>
+                </form>
+            </div>
+        </section>
+        
+        <!-- Duplicate Warning Modal (Hidden by default) -->
+        <div id="duplicate-modal" class="modal">
+            <div class="modal-content glass-card">
+                <h3><i class="fa-solid fa-triangle-exclamation" style="color: #F59E0B"></i> Duplicate Detected</h3>
+                <p>This issue seems very similar to an existing open ticket:</p>
+                <div class="dup-ticket-info" id="dup-info"></div>
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                    <button class="btn btn-primary" onclick="forceCreateTicket()">Create Anyway</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
