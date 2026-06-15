@@ -1,0 +1,7 @@
+jira_lite
+ml_models
+ml_pipeline
+services
+tickets
+*.py
+requirements.txt

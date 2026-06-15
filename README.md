@@ -1,5 +1,7 @@
 # Jira Lite: Production-Grade Ticketing System with ML
 
+**Live demo:** https://end-to-end-ticketing-system.vercel.app — _Demo: frontend only with sample tickets, mock ML category/priority prediction &amp; duplicate detection (no live Django backend)._
+
 Jira Lite is a scalable, modular ticketing system designed for enterprise-level support teams. It features integrated Machine Learning for automatic issue classification, priority prediction, and intelligent duplicate detection.
 
 ## 🚀 Key Features
